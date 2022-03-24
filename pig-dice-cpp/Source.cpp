@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <random>
 using namespace std;
 
 int main() {
@@ -13,19 +14,22 @@ int main() {
 	int roll;
 	long repCounter = 0;
 
+	default_random_engine defEngine;
+	uniform_int_distribution<int> intDistr(1, 6);
+
+
 	 
-	srand(time(NULL));
+	//srand((unsigned) time(0));
 
 	while (highScore < target)
 	{
 		++repCounter;
-		if (repCounter % 100000000 == 0) {
-			srand(time(NULL));
+		if (repCounter % 500000000 == 0) {
 			cout << "Current repetitions: " << repCounter << endl;
 		}
 		currentScore = 0;
 		do {
-			roll = rand() % 6 + 1;
+			roll = intDistr(defEngine);
 			currentScore += roll;
 			if (currentScore > highScore) {
 				highScore = currentScore;
