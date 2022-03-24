@@ -13,7 +13,6 @@ int main() {
 	int currentScore;
 	int roll;
 	long repCounter = 0;
-	int billCounter = 0;
 
 	default_random_engine defEngine(time(0));
 	uniform_int_distribution<int> intDistr(1, 6);
@@ -25,8 +24,8 @@ int main() {
 	while (highScore < target)
 	{
 		++repCounter;
-		if (repCounter % 1000000000 == 0) {
-			cout << "Billion games: " << ++billCounter << endl;
+		if (repCounter % 500000000 == 0) {
+			cout << "Current repetitions: " << repCounter << endl;
 		}
 		currentScore = 0;
 		do {
