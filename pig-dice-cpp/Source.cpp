@@ -28,7 +28,7 @@ int main() {
 		if (repCounter % 1000000000 == 0) {
 			cout << "Billion games: " << ++billCounter << endl;
 		}
-		if (billCounter % 100 == 0) {
+		if (billCounter % 100 == 0 && billCounter > 0) {
 			defEngine.seed(time(0));
 		}
 		currentScore = 0;
