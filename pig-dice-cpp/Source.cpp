@@ -14,6 +14,7 @@ int main() {
 	int roll;
 	long repCounter = 0;
 	int billCounter = 0;
+	int seedReset = 0;
 
 	default_random_engine defEngine(time(0));
 	uniform_int_distribution<int> intDistr(1, 6);
@@ -27,9 +28,11 @@ int main() {
 		++repCounter;
 		if (repCounter % 1000000000 == 0) {
 			cout << "Billion games: " << ++billCounter << endl;
+			seedReset = 1;
 		}
-		if (billCounter % 100 == 0 && billCounter > 0) {
+		if (billCounter % 100 == 0 && billCounter > 0 && seedReset == 1) {
 			defEngine.seed(time(0));
+			seedReset = 0;
 		}
 		currentScore = 0;
 		do {
